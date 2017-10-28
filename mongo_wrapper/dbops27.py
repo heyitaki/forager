@@ -28,9 +28,10 @@ def add(content, year, term, category, teacher, solution):
   bson_data = constructBson(content, year, term, category, teacher, solution)
   return collection.insert_one(bson_data).acknowledged
 
-def clear():
+def clear(certainty):
   ''' Deletes all entries and clears DB. '''
-  connect().drop()
+  if certainty:
+    connect().drop()
 
 ##### HELPER METHODS #####
 def constructBson(content, year, term, category, teacher, solution):

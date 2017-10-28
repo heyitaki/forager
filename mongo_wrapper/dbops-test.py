@@ -9,4 +9,3 @@ from dbops27 import add, dump, clear
 
 add('What is your name?', '2017', 'fall', 'innovate berkeley', 'final', 'Forage!')
 dump()
-clear()
