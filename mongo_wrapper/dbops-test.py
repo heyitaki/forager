@@ -7,5 +7,6 @@ $ python dbops-test.py
 
 from dbops27 import add, dump, clear
 
-add('What is your name?', '2017', 'fall', 'innovate berkeley', 'final', 'Forage!')
+# format: add(content, course, year, season, category, teacher, solution)
+add('What is your name?', 'cs61a', '2017', 'fall', 'final', 'denero', 'Forage!')
 dump()

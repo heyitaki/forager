@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import re
 from bson.json_util import loads, dumps
 from pymongo import MongoClient
 
@@ -13,20 +14,37 @@ def dump():
   ''' For debugging purposes. Prints queue to console. '''
   for doc in connect().find({}): print doc
 
-def add(content, year, term, category, teacher, solution):
+def add(content, course, year, season, category, teacher, solution):
   ''' Add question entry to MongoDB. 
   
   @param content: Question content, encoded as a string
   @param year: Year of test or 'n/a' if unavailable, string
-  @param term: Season ('summer', 'fall', 'winter', 'spring') or 'n/a' if unavailable, string
+  @param season: Season/term ('summer', 'fall', 'winter', 'spring') or 'n/a' if unavailable, string
   @param category: Type of test ('midterm', 'final', 'practice') or 'n/a' if unavailable, string
   @param teacher: First/last name of teacher or 'n/a' if unavailable, string
-  @param solution: Content of solution, string
+  @param solution: Content of solution or 'n/a' if unavailable, string
   @return: Whether or not the operation was successful; what to do on failure is up to user, not this wrapper
   '''
   collection = connect()
-  bson_data = constructBson(content, year, term, category, teacher, solution)
+  bson_data = constructBson(content, course, year, season, category, teacher, solution)
   return collection.insert_one(bson_data).acknowledged
+
+def search(query):
+  ''' Search for and return a specific question entry from the DB. 
+  
+  Search operators:
+  -y year 
+  -s season 
+  -c course
+  -t test type
+  -n teacher name
+  -a has answer (boolean)
+  -d difficulty >= x
+  -u usefulness >= x
+  "" exact match content-wise
+  '''
+  ops = re.split('(/^[^-]*-[^- ]+$/)', query)
+  print ops
 
 def clear(certainty):
   ''' Deletes all entries and clears DB. '''
@@ -34,13 +52,14 @@ def clear(certainty):
     connect().drop()
 
 ##### HELPER METHODS #####
-def constructBson(content, year, term, category, teacher, solution):
+def constructBson(content, course, year, season, category, teacher, solution):
   ''' Creates and returns BSON entry to add to MongoDB. '''
   data = {}
   data['_id'] = hash1(content)
   data['content'] = content
+  data['course'] = course
   data['year'] = year
-  data['term'] = term
+  data['season'] = season
   data['category'] = category
   data['teacher'] = teacher
   data['solution'] = solution
@@ -57,9 +76,8 @@ def hash1(data):
   return str(abs(hash(data)))
 
 ##### DEBUGGING METHODS #####
-
 def info(object, spacing=10, collapse=1): 
-    ''' Print methods and doc strings of a given object. '''
+    ''' Print methods and docstrings of a given object. '''
     methodList = [method for method in dir(object) if callable(getattr(object, method))]
     processFunc = collapse and (lambda s: " ".join(s.split())) or (lambda s: s)
     print "\n\n".join(["%s %s" %
@@ -68,4 +86,7 @@ def info(object, spacing=10, collapse=1):
                      for method in methodList])
 
 def test():
-  pass
+  query = "-d lol pls work -e second one"
+  print search(query)
+
+test()
