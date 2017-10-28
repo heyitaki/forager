@@ -1,5 +1,24 @@
-doctype
+doctype htmls
 html
+  head
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Lato|Raleway:200,300,400', rel='stylesheet')
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='css/styles.css')
   body
-    h1=search
-  
+    .container
+      header.result-search-area
+        .search-box
+          form#search-box(action='/query', method='POST')
+            input#search-bar.big-bar(placeholder='CS 61A', name='searchQuery',value=search  autofocus='')
+            button#search-button(type='submit')
+              i.fa.fa-angle-right.fa-2x
+      section.result-section
+        .result-area
+          for result in results
+            .result
+              .result-header
+                h3
+                  a(href='/?isSearch=false')=result.course+ " " + result.season+ " " +result.year
+              .result-details
+                p=result.content

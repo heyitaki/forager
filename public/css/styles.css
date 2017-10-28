@@ -28,6 +28,10 @@ section{
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 /*Homepage Styles*/
 .home-content-area {
   width: 60%;
@@ -123,7 +127,7 @@ section{
 }
 
 .result-area {
-  width: 75%;
+  width: 65%;
   padding: 10px 10px;
 }
 
@@ -139,4 +143,5 @@ section{
 .result-header > h3 {
   font-size: 24px;
   margin-right: 20px;
+  text-transform: uppercase;
 }
