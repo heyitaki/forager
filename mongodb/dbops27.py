@@ -30,21 +30,15 @@ def add(content, course, year, season, category, teacher, solution):
   return collection.insert_one(bson_data).acknowledged
 
 def search(query):
-  ''' Search for and return a specific question entry from the DB. 
-  
-  Search operators:
-  -y year 
-  -s season 
-  -c course
-  -t test type
-  -n teacher name
-  -a has answer (boolean)
-  -d difficulty >= x
-  -u usefulness >= x
-  "" exact match content-wise
-  '''
-  ops = re.split('(/^[^-]*-[^- ]+$/)', query)
-  print ops
+  print query
+  op_value_map = parse(query)
+  print op_value_map
+  op_field_map = {'-c': 'course', '-y': 'year', '-s': 'season', '-t': 'category', '-n': 'teacher'}
+  document = {}
+  for op in op_value_map:
+    if op in op_field_map:
+      document[op_field_map[op]] = op_value_map[op]
+  return connect().find(document)
 
 def clear(certainty):
   ''' Deletes all entries and clears DB. '''
@@ -75,6 +69,32 @@ def connect():
 def hash1(data):
   return str(abs(hash(data)))
 
+def parse(query):
+  ''' Search for and return a specific question entry from the DB. 
+  
+  Search operators:
+  -y year 
+  -s season 
+  -c course
+  -t test type
+  -n teacher name
+  -a has answer (boolean)
+  -d difficulty >= x
+  -u usefulness >= x
+  "" exact match content-wise
+  '''
+  query += ' '
+  op_map = {}
+  op_patterns = {'-y': '\d{4}', '-s': '\w+', '-c': '\w+', '-t': '\w+', '-n': '\w+', '-a': '', '-d': '\d\.\d', '-u': '\d\.\d'}
+  for op in op_patterns: 
+    tokens = re.split('(%s)[\s]+(%s)[\s]*' % (op, op_patterns[op]), query)
+    if op in tokens:
+      idx = tokens.index(op)
+      op_map[op] = tokens[idx+1]
+      query = ''.join(tokens[:idx] + tokens[idx+2:]) if idx+2 < len(tokens) else ''.join(tokens[:-2])
+  op_map['content'] = re.sub(' +', ' ', query.strip())
+  return op_map
+
 ##### DEBUGGING METHODS #####
 def info(object, spacing=10, collapse=1): 
     ''' Print methods and docstrings of a given object. '''
@@ -84,9 +104,3 @@ def info(object, spacing=10, collapse=1):
                       (method.ljust(spacing),
                        processFunc(str(getattr(object, method).__doc__)))
                      for method in methodList])
-
-def test():
-  query = "-d lol pls work -e second one"
-  print search(query)
-
-test()
