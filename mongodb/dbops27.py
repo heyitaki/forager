@@ -1,21 +1,21 @@
-# Compatible with Python version 2.7+
+# Requires Python version 2.7
 
 import hashlib
 import json
 import re
+import sys
 from bson.json_util import loads, dumps
 from pymongo import MongoClient
 
 DB_NAME = 'forage'
-COLLECTION_NAME = 'questions'
 CONNECTION_STRING = 'mongodb://root:root@cluster0-shard-00-00-inppe.mongodb.net:27017,cluster0-shard-00-01-inppe.mongodb.net:27017,cluster0-shard-00-02-inppe.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin'
 
-def dump():
+def dump(collection_name):
   ''' For debugging purposes. Prints queue to console. '''
-  for doc in connect().find({}): print doc
+  for doc in connect(collection_name).find({}): print doc
 
-def add(content, course, year, season, category, teacher, solution):
-  ''' Add question entry to MongoDB. 
+def add_question(content, course, year, season, category, teacher, solution):
+  ''' Add question entry to MongoDB questions collection. 
   
   @param content: Question content, encoded as a string
   @param year: Year of test or 'n/a' if unavailable, string
@@ -25,9 +25,26 @@ def add(content, course, year, season, category, teacher, solution):
   @param solution: Content of solution or 'n/a' if unavailable, string
   @return: Whether or not the operation was successful; what to do on failure is up to user, not this wrapper
   '''
-  collection = connect()
-  bson_data = constructBson(content, course, year, season, category, teacher, solution)
+  collection = connect('questions')
+  bson_data = bsonify_question(content, course, year, season, category, teacher, solution)
   return collection.insert_one(bson_data).acknowledged
+
+def add_tags(content, tag_lst):
+  ''' Add one or more tags relating to a specific question, in the tags collection.
+  Duplicates will be ignored. '''
+  collection = connect('tags')
+  question_id = hash1(content)
+  print collection.find({'_id': question_id}).count()
+  if collection.find({'_id': question_id}).count() > 0:
+    prev_lst = collection.find({'_id': question_id})[0]['tags']
+    tag_lst = prev_lst + list(set(tag_lst) - set(prev_lst))
+    bson_data = bsonify_tags(question_id, tag_lst)
+    return collection.replace_one({'_id': question_id}, bson_data).acknowledged
+  bson_data = bsonify_tags(question_id, tag_lst)
+  return collection.insert_one(bson_data).acknowledged
+
+def add_rating(content, rating_type, rating_val):
+  pass
 
 def search(query):
   ''' Search the DB for a specific query and return all relevant results, in no specific order. '''
@@ -35,23 +52,59 @@ def search(query):
   op_field_map = {'-c': 'course', '-y': 'year', '-s': 'season', '-t': 'category', '-n': 'teacher'}
 
   document = {}
+  matches = set()
+  collection = connect('tags')
+  if 'content' in op_value_map:
+    for word in op_value_map['content'].split():
+      document['tags'] = {'$all': [word]}
+      matches.update([q['_id'] for q in collection.find(document)])
+
+  document = {}
   for op in op_value_map:
     if op in op_field_map:
       document[op_field_map[op]] = op_value_map[op]
 
   if 'content' in op_value_map:
-    document['content'] = {'$regex': '.*%s.*' % op_value_map['content']}
+    if len(matches) == 0:
+      document['content'] = {'$regex': '.*%s.*' % op_value_map['content']}
+    else:
+      or_conditions = []
+      for qid in matches:
+        or_conditions.append({'_id': qid})
+      or_conditions.append({'content': {'$regex': '.*%s.*' % op_value_map['content']}})
+      document['$or'] = or_conditions
 
-  return connect().find(document)
+  return connect('questions').find(document)
 
-def clear(certainty):
+def clear(collection_name, skip):
   ''' Deletes all entries and clears DB. '''
-  if certainty:
-    connect().drop()
+  if skip:
+    connect(collection_name).drop()
+    return
+
+  valid = {'yes': True, 'y': True, 'no': False, 'n': False}
+  sys.stdout.write("Are you sure you want to clear the entire DB? ")
+  sys.stdout.flush()
+  while True:
+    choice = raw_input().lower()
+    if choice not in valid:
+      sys.stdout.write("Please select a valid option (y/n).")
+    elif valid[choice]:
+      connect(collection_name).drop()
+      return
+    else:
+      return
 
 ##### HELPER METHODS #####
-def constructBson(content, course, year, season, category, teacher, solution):
-  ''' Creates and returns BSON entry to add to MongoDB. '''
+def connect(collection_name):
+  ''' Connects to the Mongo DB and returns the specified collection (for now, 'questions' by default). '''
+  client = MongoClient(CONNECTION_STRING)
+  db = getattr(client, DB_NAME)
+  collection = getattr(db, collection_name)
+  return collection
+
+def bsonify_question(content, course, year, season, category, teacher, solution):
+  ''' Creates and returns BSON entry encoding relevant question info to add to MongoDB. '''
   data = {}
   data['_id'] = hash1(content)
   data['content'] = content
@@ -63,12 +116,12 @@ def constructBson(content, course, year, season, category, teacher, solution):
   data['solution'] = solution
   return loads(json.dumps(data))
 
-def connect():
-  ''' Connects to the Mongo DB and returns the specified collection (for now, 'questions' by default). '''
-  client = MongoClient(CONNECTION_STRING)
-  db = getattr(client, DB_NAME)
-  collection = getattr(db, COLLECTION_NAME)
-  return collection
+def bsonify_tags(question_id, tag_lst):
+  ''' Creates and returns BSON entry encoding relevant tag info to add to MongoDB. '''
+  data = {}
+  data['_id'] = question_id
+  data['tags'] = tag_lst
+  return loads(json.dumps(data))
 
 def hash1(data):
   return str(abs(hash(data)))
@@ -102,10 +155,7 @@ def parse(query):
 
 ##### DEBUGGING METHODS #####
 def info(object, spacing=10, collapse=1): 
-    ''' Print methods and docstrings of a given object. '''
-    methodList = [method for method in dir(object) if callable(getattr(object, method))]
-    processFunc = collapse and (lambda s: " ".join(s.split())) or (lambda s: s)
-    print "\n\n".join(["%s %s" %
-                      (method.ljust(spacing),
-                       processFunc(str(getattr(object, method).__doc__)))
-                     for method in methodList])
+  ''' Print methods and docstrings of a given object. Useful for looking into pymongo objects without much online documentation. '''
+  methodList = [method for method in dir(object) if callable(getattr(object, method))]
+  processFunc = collapse and (lambda s: " ".join(s.split())) or (lambda s: s)
+  print "\n\n".join(["%s %s" % (method.ljust(spacing), processFunc(str(getattr(object, method).__doc__))) for method in methodList])
