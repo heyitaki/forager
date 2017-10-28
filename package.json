@@ -1,0 +1,17 @@
+{
+  "name": "forage",
+  "version": "1.0.0",
+  "description": "custom search engine for practice problems",
+  "main": "script.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
