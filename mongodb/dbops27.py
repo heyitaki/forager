@@ -15,8 +15,8 @@ def dump(collection_name):
   for doc in connect(collection_name).find({}): print doc
 
 def add_question(content, course, year, season, category, teacher, solution):
-  ''' Add question entry to MongoDB questions collection. 
-  
+  ''' Add question entry to MongoDB questions collection.
+
   @param content: Question content, encoded as a string
   @param year: Year of test or 'n/a' if unavailable, string
   @param season: Season/term ('summer', 'fall', 'winter', 'spring') or 'n/a' if unavailable, string
@@ -47,13 +47,13 @@ def add_rating(content, rating_type, rating_val):
   pass
 
 def search(query):
-  ''' Search the DB for a specific query and return all relevant results, in no specific order. 
-  
+  ''' Search the DB for a specific query and return all relevant results, in no specific order.
+
   Currently, search works according to the following rules:
   1. Parse out specific operators (denoted by '-char' and followed by an argument)
   2. Take the remaining text and treat it as the content of the actual query
   3. Take each word from this content and compare it to the entries in the tags DB
-  4. Take all of the matches from the tags DB, as well as all of the partial content matches from the 
+  4. Take all of the matches from the tags DB, as well as all of the partial content matches from the
   questions DB and return.
   '''
   op_value_map = parse(query)
@@ -82,7 +82,7 @@ def search(query):
       or_conditions.append({'content': {'$regex': '.*%s.*' % op_value_map['content']}})
       document['$or'] = or_conditions
 
-  return connect('questions').find(document)
+  return dumps(connect('questions').find(document))
 
 def clear(collection_name, skip):
   ''' Deletes all entries and clears DB. '''
@@ -135,12 +135,12 @@ def hash1(data):
   return str(abs(hash(data)))
 
 def parse(query):
-  ''' Parse a given query according to the following operators and delimiters. Returns a mapping of each operator 
+  ''' Parse a given query according to the following operators and delimiters. Returns a mapping of each operator
   to the corresponding value passed into the query.
-  
+
   Search operators:
-  -y year 
-  -s season 
+  -y year
+  -s season
   -c course
   -t test type
   -n teacher name
@@ -152,7 +152,7 @@ def parse(query):
   query += ' '
   op_map = {}
   op_patterns = {'-y': '\d{4}', '-s': '\w+', '-c': '\w+', '-t': '\w+', '-n': '\w+', '-a': '', '-d': '\d\.\d', '-u': '\d\.\d'}
-  for op in op_patterns: 
+  for op in op_patterns:
     tokens = re.split('(%s)[\s]+(%s)[\s]*' % (op, op_patterns[op]), query)
     if op in tokens:
       idx = tokens.index(op)
@@ -162,7 +162,7 @@ def parse(query):
   return op_map
 
 ##### DEBUGGING METHODS #####
-def info(object, spacing=10, collapse=1): 
+def info(object, spacing=10, collapse=1):
   ''' Print methods and docstrings of a given object. Useful for looking into pymongo objects without much online documentation. '''
   methodList = [method for method in dir(object) if callable(getattr(object, method))]
   processFunc = collapse and (lambda s: " ".join(s.split())) or (lambda s: s)
