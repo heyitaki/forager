@@ -50,6 +50,11 @@ section{
   justify-content: flex-end;
 }
 
+.search form {
+  display: flex;
+  justify-content: flex-end;
+}
+
 #search-bar {
   position: absolute;
   width: 60vw;

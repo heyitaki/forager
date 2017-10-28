@@ -4,17 +4,19 @@
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Raleway:200,300,400" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel='stylesheet'>
-    <link rel="stylesheet" href="assets/css/styles.css"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
   </head>
   <body>
     <div class="container">
       <section>
-        <div class="background-image" style="background-image: url(assets/img/background.jpg)"></div>
+        <div class="background-image" style="background-image: url(img/background.jpg)"></div>
         <div class="content-area">
           <h1 id="title" class="animated fadeInUp">Forage</h1>
           <div class="search animated fadeInUp">
-            <input id="search-bar" placeholder="CS 61A" autofocus>
-            <button id="search-button"><i class="fa fa-angle-right fa-2x"></i></button>
+            <form action="/query" method="POST">
+              <input id="search-bar" placeholder="CS 61A" name="searchQuery" autofocus>
+              <button id="search-button" type="submit"><i class="fa fa-angle-right fa-2x"></i></button>
+            </form>
           </div>
         </div>
       </section>
