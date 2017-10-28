@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   } else if(searchItem.isSearch) {
     var options = {
       mode: 'json',
-      args: ['memory'],
+      args: [searchItem.search],
       scriptPath: './mongodb',
     }
     PythonShell.run('search.py', options, function (err, results) {
