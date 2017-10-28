@@ -47,7 +47,15 @@ def add_rating(content, rating_type, rating_val):
   pass
 
 def search(query):
-  ''' Search the DB for a specific query and return all relevant results, in no specific order. '''
+  ''' Search the DB for a specific query and return all relevant results, in no specific order. 
+  
+  Currently, search works according to the following rules:
+  1. Parse out specific operators (denoted by '-char' and followed by an argument)
+  2. Take the remaining text and treat it as the content of the actual query
+  3. Take each word from this content and compare it to the entries in the tags DB
+  4. Take all of the matches from the tags DB, as well as all of the partial content matches from the 
+  questions DB and return.
+  '''
   op_value_map = parse(query)
   op_field_map = {'-c': 'course', '-y': 'year', '-s': 'season', '-t': 'category', '-n': 'teacher'}
 
