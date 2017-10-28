@@ -30,14 +30,18 @@ def add(content, course, year, season, category, teacher, solution):
   return collection.insert_one(bson_data).acknowledged
 
 def search(query):
-  print query
+  ''' Search the DB for a specific query and return all relevant results, in no specific order. '''
   op_value_map = parse(query)
-  print op_value_map
   op_field_map = {'-c': 'course', '-y': 'year', '-s': 'season', '-t': 'category', '-n': 'teacher'}
+
   document = {}
   for op in op_value_map:
     if op in op_field_map:
       document[op_field_map[op]] = op_value_map[op]
+
+  if 'content' in op_value_map:
+    document['content'] = {'$regex': '.*%s.*' % op_value_map['content']}
+
   return connect().find(document)
 
 def clear(certainty):
@@ -70,7 +74,8 @@ def hash1(data):
   return str(abs(hash(data)))
 
 def parse(query):
-  ''' Search for and return a specific question entry from the DB. 
+  ''' Parse a given query according to the following operators and delimiters. Returns a mapping of each operator 
+  to the corresponding value passed into the query.
   
   Search operators:
   -y year 
