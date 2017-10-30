@@ -44,6 +44,13 @@ def add_tags(content, tag_lst):
   return collection.insert_one(bson_data).acknowledged
 
 def add_rating(content, rating_type, rating_val):
+  ''' Add a rating to the ratings database.
+
+  @param diff_rating: Difficulty rating of the question, -1 for now, x/5.0 with user reviews, integer
+  @param num_diff: # of people who submitted a difficulty rating, integer
+  @param use_rating: Usefulness rating, -1 for now, x/5.0 with user reviews, integer
+  @param num_use: # of people who submitted a usefulness rating, integer
+  '''
   pass
 
 def search(query):

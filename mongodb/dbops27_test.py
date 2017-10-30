@@ -6,10 +6,9 @@ from dbadd_cs186_sp_2016_mt2 import add_exam as add2
 def test():
   #query = "  hello world  -y   2017  -a -c  midterm1    recursion"
   #print search(query)
-  query = "memory"
+  query = "disk"
   result = search(query)
-  for item in result:
-    print dumps(item)
+  print result
 
 # add1()
 # add2()

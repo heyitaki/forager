@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
   var searchItem = req.query;
   if(Object.keys(searchItem).length === 0) {
     res.render('index');
-  } else if(searchItem.isSearch) {
+  } else {
     var options = {
       mode: 'json',
       args: [searchItem.search],
@@ -43,7 +43,15 @@ app.post('/query', (req, res) => {
     pathname: '/',
     query: {
       search: req.body.searchQuery,
-      isSearch: true
+    }
+  }))
+})
+
+app.get('/question', (req, res) => {
+  res.redirect(url.format({
+    pathname: '/',
+    query: {
+      q: '100101010',
     }
   }))
 })
