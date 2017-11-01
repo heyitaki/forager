@@ -22,7 +22,11 @@ MongoClient.connect('mongodb://root:root@cluster0-shard-00-00-inppe.mongodb.net:
 
 app.get('/', (req, res) => {
   res.render('index');
-})
+});
+
+app.get('/query', (req, res) => {
+  res.status(303).send('303: Use /search');
+});
 
 app.post('/query', (req, res) => {
   res.redirect(url.format({
