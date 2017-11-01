@@ -19,6 +19,6 @@ html
             .result
               .result-header
                 h3
-                  a(href='/question')=result.course + " " + result.season + " " + result.year + " " + result.category
+                  a(href='/q='+result._id)=result.course + " " + result.season + " " + result.year + " " + result.category
               .result-details
                 p=result.content

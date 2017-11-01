@@ -22,7 +22,7 @@ MongoClient.connect('mongodb://root:root@cluster0-shard-00-00-inppe.mongodb.net:
 
 app.get('/', (req, res) => {
   var searchItem = req.query;
-  if(Object.keys(searchItem).length === 0) {
+  if (Object.keys(searchItem).length === 0) {
     res.render('index');
   } else {
     var options = {
@@ -30,7 +30,8 @@ app.get('/', (req, res) => {
       args: [searchItem.search],
       scriptPath: './mongodb',
     }
-    PythonShell.run('search.py', options, function (err, results) {
+
+    PythonShell.run('search_by_query.py', options, function (err, results) {
         if (err) throw err;
         console.log(results[0]);
         res.render('searchResults', {search: searchItem.search, results: results[0]});
@@ -47,11 +48,24 @@ app.post('/query', (req, res) => {
   }))
 })
 
-app.get('/question', (req, res) => {
+app.get('/q=:id', (req, res) => {
+  var qid = req.params.id;
   res.redirect(url.format({
     pathname: '/',
     query: {
-      q: '100101010',
+      q: qid,
     }
-  }))
+  }));
+
+  var options = {
+    mode: 'json',
+    args: [qid],
+    scriptPath: './mongodb',
+  }
+
+  PythonShell.run('search_by_id.py', options, function (err, results) {
+      if (err) throw err;
+      console.log(results[0]);
+      res.render('searchResults', {search: searchItem.search, results: results[0]});
+  });
 })

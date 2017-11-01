@@ -34,7 +34,6 @@ def add_tags(content, tag_lst):
   Duplicates will be ignored. '''
   collection = connect('tags')
   question_id = hash1(content)
-  print collection.find({'_id': question_id}).count()
   if collection.find({'_id': question_id}).count() > 0:
     prev_lst = collection.find({'_id': question_id})[0]['tags']
     tag_lst = prev_lst + list(set(tag_lst) - set(prev_lst))
