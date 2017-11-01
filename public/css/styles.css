@@ -69,7 +69,6 @@ a {
   margin: auto;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 2.5vw;
 }
 
 #search-box {
@@ -85,7 +84,7 @@ a {
   border: 1px solid white;
   border-radius: 20px;
   animation-delay: 0.3s;
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Lato';
 }
 

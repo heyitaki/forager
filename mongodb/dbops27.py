@@ -90,6 +90,10 @@ def search(query):
 
   return dumps(connect('questions').find(document))
 
+def search_by_qid(qid):
+  document = {'_id': qid}
+  return dumps(connect('questions').find(document))
+
 def clear(collection_name, skip):
   ''' Deletes all entries and clears DB. '''
   if skip:
