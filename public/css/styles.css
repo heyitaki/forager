@@ -132,6 +132,7 @@ a {
 
 .result {
   text-align: left;
+  position: relative;
   margin: 5px 0px 5px 0px;
   padding: 15px;
   width: 100%;
@@ -153,6 +154,25 @@ a {
 
 .result:focus {
   outline: 0;
+}
+
+.result:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, .2), #FFF 75%)
+}
+
+.result:hover:after {
+  background: linear-gradient(to right, rgba(224, 224, 224, .2), #E0E0E0 75%)
+}
+
+.result:active:after {
+  background: linear-gradient(to right, rgba(218, 218, 218, .2), #DADADA 75%)
 }
 
 .result-header {
