@@ -213,19 +213,39 @@ a {
 
 .box {
   display: inline-block;
+  position: relative;
   background: #FFF;
   min-height: 33%;
   width: 47%;
   margin: 2%;
-  padding: 25px;
   border-radius: 15px;
   box-shadow: inset 0px 0px 5px;
+  text-overflow: hidden;
 }
 
 #question-box {
   margin-right: 1%;
+  padding: 25px;
 }
 
 #answer-box {
   margin-left: 1%;
+}
+
+#blur {
+  position: relative;
+  width: 100%;
+  padding: 25px;
+  filter: blur(5px); 
+}
+
+#remove-blur {
+  position: absolute;
+  display: inline-block;
+  height: 45px;
+  width: 160px;
+  left: calc(50% - 80px);
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: white;
 }

@@ -44,7 +44,7 @@ app.get('/search/:id', (req, res) => {
   PythonShell.run('search_by_query.py', options, function (err, results) {
       if (err) throw err;
       console.log(results[0]);
-      res.render('search', {search: req.params.id, results: results[0]});
+      res.render('search', {query: req.params.id, results: results[0]});
   });
 })
 
@@ -58,6 +58,6 @@ app.get('/question/:id', (req, res) => {
   PythonShell.run('search_by_qid.py', options, function (err, results) {
       if (err) throw err;
       console.log(results[0]);
-      res.render('search', {search: 'hello', results: results[0]});
+      res.render('question', {question: results[0][0]});
   });
 })

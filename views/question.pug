@@ -14,7 +14,14 @@ html
       .box#question-box
         p=question.content
       .box#answer-box
-        p=question.solution
-          
+        #blur
+          p=question.solution
+        button#remove-blur(type='button', onclick='removeBlur()') Show Solution
+script.
+  function removeBlur() {
+    document.getElementById("remove-blur").remove();
+    document.getElementById("blur").style.filter = 'blur(0px)';
+  }
+
 
 
