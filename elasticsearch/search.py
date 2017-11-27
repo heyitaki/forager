@@ -1,4 +1,4 @@
-import requests
+from elasticsearch import Elasticsearch
 
-res = requests.get('http://localhost:9200')
-print(res.content)
+es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+for q in p:
