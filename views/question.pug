@@ -6,4 +6,15 @@ html
     link(rel='stylesheet', href='/css/styles.css')
   body
     .container
+      header#question-navbar
+        .question-title
+          h2=question.course + " " + question.season + " " + question.year + " " + question.category
+  section
+    .question-area
+      .box#question-box
+        p=question.content
+      .box#answer-box
+        p=question.solution
+          
+
 
