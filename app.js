@@ -7,6 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 const pug = require('pug');
 const PythonShell = require('python-shell');
 const app = express();
+const PORT = process.env.PORT || 6967;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -15,8 +16,8 @@ app.set('view engine', 'pug');
 MongoClient.connect('mongodb://root:root@cluster0-shard-00-00-inppe.mongodb.net:27017,cluster0-shard-00-01-inppe.mongodb.net:27017,cluster0-shard-00-02-inppe.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', (err, database) => {
   if (err) return console.log(err)
   db = database
-  app.listen(4023, function() {
-    console.log('Listening on port 4023');
+  app.listen(PORT, function() {
+    console.log(`Listening on port ${ PORT }`);
   })
 })
 

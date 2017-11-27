@@ -4,7 +4,8 @@
   "description": "custom search engine for practice problems",
   "main": "script.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +19,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
+  },
+  "engines": {
+    "node": "6.11.5",
+    "npm": "5.5.1"
   }
 }

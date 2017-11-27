@@ -1,10 +1,9 @@
-FORAGE
+## FORAGER
 
-Usage Instructions
-1. clone this repo
-2. navigate to the root folder and run 'npm run dev'
-3. navigate to 'localhost:3000' in your browser
+### Usage Instructions
+Simply navigate to https://whispering-wave-51295.herokuapp.com/.
 
-Next steps
-- Implement problem pages
-- Further data/user acquisition
+### Next steps
+- Integration with HKN site
+- Transition to Elasticsearch and further data acquisition through Amazon Turk
+- Custom domain (berkeleyforage.org) should point to the heroku URL above.
