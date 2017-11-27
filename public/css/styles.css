@@ -214,22 +214,23 @@ a {
 .box {
   display: inline-block;
   position: relative;
+  vertical-align: top;
   background: #FFF;
   min-height: 33%;
-  width: 47%;
-  margin: 2%;
+  width: calc(50% - 30px);
+  margin: 20px;
   border-radius: 15px;
   box-shadow: inset 0px 0px 5px;
   text-overflow: hidden;
 }
 
 #question-box {
-  margin-right: 1%;
+  margin-right: 10px;
   padding: 25px;
 }
 
 #answer-box {
-  margin-left: 1%;
+  margin-left: 10px;
 }
 
 #blur {
@@ -239,13 +240,29 @@ a {
   filter: blur(5px); 
 }
 
+.button {
+  background-color: white;
+  border: 1px solid #DADADA;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.button:hover {
+  background: #E0E0E0;
+}
+
+.button:active {
+  background: #DADADA;
+}
+
+.button:focus {
+  outline: 0px;
+}
+
 #remove-blur {
   position: absolute;
   display: inline-block;
   height: 45px;
   width: 160px;
   left: calc(50% - 80px);
-  text-transform: uppercase;
-  font-weight: 600;
-  background-color: white;
 }
