@@ -1,4 +1,4 @@
-  /*General Styles*/
+/* General Styles*/
 * {
   margin: 0;
   padding: 0;
@@ -32,7 +32,7 @@ a {
   text-decoration: none;
 }
 
-/*Homepage Styles*/
+/* Homepage Styles*/
 .home-content-area {
   width: 60%;
 }
@@ -48,7 +48,7 @@ a {
   animation-delay: 0.3s;
 }
 
-/*Search Styles*/
+/* Search Styles*/
 .search {
   display: flex;
   margin-top: 70px;
@@ -81,7 +81,7 @@ a {
   height: 34px;
   text-align: center;
   outline: none;
-  border: 1px solid white;
+  border: 1px solid #BFBFBF;
   border-radius: 20px;
   animation-delay: 0.3s;
   font-size: 18px;
@@ -96,7 +96,7 @@ a {
   text-align: center;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  border: 1px solid white;
+  border: 1px solid #BFBFBF;
   background: #3F51B5;
   color: white;
 }
@@ -109,8 +109,7 @@ a {
   background: #1A237E;
 }
 
-
-/*Results Styles*/
+/* Results Styles*/
 .result-search-area {
   display: flex;
   flex-direction: column-reverse;
@@ -131,7 +130,28 @@ a {
 }
 
 .result {
-  margin: 30px 0;
+  text-align: left;
+  margin: 5px 0px 5px 0px;
+  padding: 15px;
+  width: 100%;
+  border: 1px solid #DADADA;
+  background: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.result:hover {
+  background: #E0E0E0;
+}
+
+.result:active {
+  background: #DADADA;
+}
+
+.result:focus {
+  outline: 0;
 }
 
 .result-header {
@@ -140,7 +160,17 @@ a {
 }
 
 .result-header > h3 {
-  font-size: 18px;
+  font-size: 15px;
   margin-right: 20px;
   text-transform: uppercase;
 }
+
+.result-details {
+  font-size: 13px;
+  max-height: 2em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Question Styles */

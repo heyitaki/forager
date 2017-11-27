@@ -15,8 +15,8 @@ app.set('view engine', 'pug');
 MongoClient.connect('mongodb://root:root@cluster0-shard-00-00-inppe.mongodb.net:27017,cluster0-shard-00-01-inppe.mongodb.net:27017,cluster0-shard-00-02-inppe.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', (err, database) => {
   if (err) return console.log(err)
   db = database
-  app.listen(3000, function() {
-    console.log('Listening on port 3000');
+  app.listen(4023, function() {
+    console.log('Listening on port 4023');
   })
 })
 
@@ -44,7 +44,7 @@ app.get('/search/:id', (req, res) => {
   PythonShell.run('search_by_query.py', options, function (err, results) {
       if (err) throw err;
       console.log(results[0]);
-      res.render('searchResults', {search: req.params.id, results: results[0]});
+      res.render('search', {search: req.params.id, results: results[0]});
   });
 })
 
@@ -58,6 +58,6 @@ app.get('/question/:id', (req, res) => {
   PythonShell.run('search_by_qid.py', options, function (err, results) {
       if (err) throw err;
       console.log(results[0]);
-      res.render('question', {results: results[0]});
+      res.render('search', {search: 'hello', results: results[0]});
   });
 })

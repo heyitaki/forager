@@ -10,15 +10,19 @@ html
       header.result-search-area
         .search-box
           form#search-box(action='/query', method='POST')
-            input#search-bar.big-bar(placeholder='Search for questions by course, topic, year, etc...', name='searchQuery', value=search, autofocus='', autocomplete='off')
+            input#search-bar.big-bar(placeholder='Search for questions by course, topic, year, etc...' name='searchQuery' value=search autofocus='', autocomplete='off')
             button#search-button(type='submit')
               i.fa.fa-angle-right.fa-2x
       section.result-section
         .result-area
           for result in results
-            .result
+            button.result(type='button' onclick=`link(${result._id})`)
               .result-header
                 h3
                   a(href='/question/'+result._id)=result.course + " " + result.season + " " + result.year + " " + result.category
               .result-details
                 p=result.content
+script.
+  function link(qid) {
+    window.location.href = '/question/' + qid;
+  }
