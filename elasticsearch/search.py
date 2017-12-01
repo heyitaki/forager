@@ -1,4 +1,6 @@
 from elasticsearch import Elasticsearch
+import json
+import requests
 
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
-for q in p:
+#es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+
