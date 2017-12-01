@@ -1,4 +1,0 @@
-elasticsearch (5.4.0)
-pip (9.0.1)
-pymongo (3.5.1)
-requests (2.18.4)
