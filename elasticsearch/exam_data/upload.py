@@ -8,11 +8,11 @@ def upload_to_elastic():
   for filename in os.listdir('./image_question'):
     [exam_info_path, question_info_path, question_image_path, solution_image_path] = get_paths(filename)
 
-    upload_to_gcs(question_image_path.split('/')[-1], question_image_path)
-    upload_to_gcs(solution_image_path.split('/')[-1], solution_image_path)
+    data = {}
+    data['q_img'] = upload_to_gcs(question_image_path.split('/')[-1], question_image_path)
+    data['s_img'] = upload_to_gcs(solution_image_path.split('/')[-1], solution_image_path)
     print '%s uploaded successfully to GCS' % filename
 
-    data = {}
     update_json(data, exam_info_path)
     update_json(data, question_info_path)    
 
@@ -25,6 +25,7 @@ def upload_to_gcs(destination_blob_name, filepath):
   bucket = storage_client.get_bucket('forager-qa-images')
   blob = bucket.blob(destination_blob_name)
   blob.upload_from_filename(filepath)
+  return destination_blob_name
 
 ##### HELPERS #####
 def get_paths(path):

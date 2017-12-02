@@ -231,6 +231,11 @@ a {
   background-color: #FFF;
 }
 
+.scaled-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .box {
   display: inline-block;
   position: relative;
@@ -251,6 +256,7 @@ a {
 
 #answer-box {
   margin-left: 10px;
+  position: relative;
 }
 
 #blur {
@@ -281,8 +287,8 @@ a {
 
 #remove-blur {
   position: absolute;
-  display: inline-block;
-  height: 45px;
-  width: 160px;
-  left: calc(50% - 80px);
+  height: 50px;
+  width: 170px;
+  left: calc(50% - 85px);
+  top: calc(50% - 25px);
 }

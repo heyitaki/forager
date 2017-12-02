@@ -16,13 +16,13 @@ html
       section.result-section
         .result-area
           for result in results
-            button.result(type='button', onclick=`link(${result._id})`)
+            button.result(type='button', onclick=`link('${result._id}')`)
               .result-header
                 h3
-                  a=result.course + " " + result.season + " " + result.year + " " + result.category
+                  a=result._source.course + " " + result._source.term + " " + result._source.exam_type + " #" + result._source.number
               .result-details
-                p=result.content
+                p=result._source.q_txt
 script.
   function link(qid) {
-    window.location.href = '/question/' + qid;
+    window.location.href = `/question/${qid}`;
   }

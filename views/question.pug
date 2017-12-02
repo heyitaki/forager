@@ -8,14 +8,14 @@ html
     .container
       header#question-navbar
         .question-title
-          h2=question.course + " " + question.season + " " + question.year + " " + question.category
+          h2=question._source.course + " " + question._source.term + " " + question._source.exam_type + " #" + question._source.number 
   section
     .question-area
       .box#question-box
-        p=question.content
+        img.scaled-image(src='/img/question.PNG')
       .box#answer-box
         #blur
-          p=question.solution
+          img.scaled-image(src='/img/solution.PNG')
         button.button#remove-blur(type='button', onclick='removeBlur()') Show Solution
 script.
   function removeBlur() {
