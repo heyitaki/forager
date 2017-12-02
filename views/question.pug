@@ -7,23 +7,26 @@ html
   body
     .container
       header#question-navbar
-        .logo
-          h2=FORAGER
-        .question-title
+        .navbar-title.logo
+          .logo-text
+            h2="FORAGER"
+          .logo-loc
+            h4=question._source.school
+        .navbar-title.question-title
           h2=question._source.course + " " + question._source.term + " " + question._source.exam_type + " #" + question._source.number 
   section
     .question-area
       .box#question-box
-        img.scaled-image#q-img(src='/img/question.PNG')
+        img.scaled-image(src='/img/question.PNG')
       .box#answer-box
         #blur
-          img.scaled-image#s-img(src='/img/solution.PNG')
+          img.scaled-image(src='/img/solution.PNG')
         button.button#remove-blur(type='button', onclick='removeBlur()') Show Solution
 script.
-  var height = Math.max(document.getElementById("q-img").offsetHeight, document.getElementById("s-img").offsetHeight);
-  document.getElementById("q-img").style.height = `${height}px`;
-  document.getElementById("s-img").style.height = `${height}px`;
-  
+  var height = Math.max(document.getElementById("question-box").offsetHeight, document.getElementById("answer-box").offsetHeight);
+  document.getElementById("question-box").style.height = `${height}px`;
+  document.getElementById("answer-box").style.height = `${height}px`;
+
   function removeBlur() {
     document.getElementById("remove-blur").remove();
     document.getElementById("blur").style.filter = 'blur(0px)';

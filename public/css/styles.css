@@ -211,17 +211,33 @@ a {
   background: #000;
 }
 
-.question-title {
+.navbar-title {
   display: inline-block;
   position: relative;
   top: 50%;
-  margin-right: 2%;
   transform: perspective(1px) translateY(-50%);
   text-transform: uppercase;
   font-size: 14px;
   font-family: 'Tahoma';
   letter-spacing: 1px;
   color: #000;
+}
+
+.logo {
+  margin-left: 2%;
+  float: left;
+}
+
+.logo-text {
+  display: inline-block;
+}
+
+.logo-loc {
+  display: inline-block;
+}
+
+.question-title {
+  margin-right: 2%;
   float: right;
 }
 
@@ -234,7 +250,7 @@ a {
 
 .scaled-image {
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
 }
 
 .box {
