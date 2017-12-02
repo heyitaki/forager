@@ -41,3 +41,5 @@ Thumbs.db
 ##########
 node_modules
 elasticsearch/data
+public/img/question.PNG
+public/img/solution.PNG
