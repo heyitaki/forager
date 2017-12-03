@@ -82,7 +82,7 @@ a {
   text-align: center;
   outline: none;
   border: 1px solid #777777;
-  border-radius: 20px;
+  border-radius: 5px;
   animation-delay: 0.3s;
   font-size: 18px;
   font-family: 'Lato';
@@ -94,9 +94,9 @@ a {
   height: 34px;
   z-index: 1;
   text-align: center;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border: 1px solid #777777;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #3F51B5;
   border-left: 0px;
   background: #3F51B5;
   color: white;
@@ -111,11 +111,11 @@ a {
 }
 
 /* Results Styles*/
-.result-search-area {
+.result-navbar {
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
-  height: 15vh;
+  height: 10%;
   background-color: #E0E0E0;
 }
 
@@ -126,7 +126,7 @@ a {
 }
 
 .result-area {
-  width: 65%;
+  width: 55%;
   padding: 10px 10px;
 }
 
@@ -163,7 +163,7 @@ a {
   right: 0;
   bottom: 0;
   width: 60px;
-  height: 100%;
+  height: 32px;
   background: linear-gradient(to right, rgba(255, 255, 255, .2), #FFF 75%)
 }
 
@@ -190,10 +190,8 @@ a {
 .result-details {
   font-size: 13px;
   font-weight: 500;
-  max-height: 2em;
-  white-space: nowrap;
+  max-height: 2.5em;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* Question Styles */
@@ -226,14 +224,40 @@ a {
 .logo {
   margin-left: 2%;
   float: left;
+  user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .logo-text {
   display: inline-block;
 }
 
+.logo-text a:link {
+  text-decoration: none;
+  color: #000;
+}
+
+.logo-text a:visited {
+  text-decoration: none;
+  color: #000;
+}
+
 .logo-loc {
   display: inline-block;
+  color: #3F51B5;
+}
+
+.logo-loc a:link {
+  text-decoration: none;
+  color: #3F51B5;
+}
+
+.logo-loc a:visited {
+  text-decoration: none;
+  color: #3F51B5;
 }
 
 .question-title {
@@ -261,7 +285,7 @@ a {
   min-height: 33%;
   width: calc(50% - 30px);
   margin: 20px;
-  border-radius: 15px;
+  border-radius: 5px;
   box-shadow: inset 0px 0px 5px;
   text-overflow: hidden;
 }
@@ -284,18 +308,19 @@ a {
 }
 
 .button {
-  background-color: white;
-  border: 1px solid #DADADA;
+  background-color: transparent;
+  border: 1px solid #777777;
+  color: #777777;
   text-transform: uppercase;
   font-weight: 600;
 }
 
 .button:hover {
-  background: #E0E0E0;
+  background: rgba(255, 255, 255, .25);
 }
 
 .button:active {
-  background: #DADADA;
+  background: rgba(255, 255, 255, .5);
 }
 
 .button:focus {

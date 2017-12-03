@@ -9,9 +9,11 @@ html
       header#question-navbar
         .navbar-title.logo
           .logo-text
-            h2="FORAGER"
+            h2 
+              a(href="/")="FORAGER"
           .logo-loc
-            h4=question._source.school
+            h4
+              a(href="/")=question._source.school
         .navbar-title.question-title
           h2=question._source.course + " " + question._source.term + " " + question._source.exam_type + " #" + question._source.number 
   section
@@ -31,6 +33,3 @@ script.
     document.getElementById("remove-blur").remove();
     document.getElementById("blur").style.filter = 'blur(0px)';
   }
-
-
-
