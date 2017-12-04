@@ -1,10 +1,9 @@
 from elasticsearch import Elasticsearch
 from google.cloud import storage
-import os
-import json
+import os, re, json, certifi
 
 def upload_to_elastic():
-  es = start_elastic()
+  es = start_bonsai()
   for filename in os.listdir('./image_question'):
     [exam_info_path, question_info_path, question_image_path, solution_image_path] = get_paths(filename)
 
@@ -26,7 +25,7 @@ def upload_to_gcs(destination_blob_name, filepath):
   return destination_blob_name
 
 def clear_elastic():
-  es = start_elastic()
+  es = start_bonsai()
   es.indices.delete(index='exam', ignore=[400, 404])
 
 ##### HELPERS #####
@@ -47,6 +46,13 @@ def update_json(curr_json, path_to_json):
 
 def start_elastic():
   return Elasticsearch([{'host': 'localhost', 'port': 9200}])
+
+def start_bonsai():
+  bonsai = os.environ['BONSAI_URL']
+  auth = re.search('https\:\/\/(.*)\@', bonsai).group(1).split(':')
+  host = bonsai.replace('https://%s:%s@' % (auth[0], auth[1]), '')
+  es_header = [{'host': host, 'port': 443, 'use_ssl': True, 'http_auth': (auth[0],auth[1])}]
+  return Elasticsearch(es_header)
 
 #clear_elastic()
 upload_to_elastic()

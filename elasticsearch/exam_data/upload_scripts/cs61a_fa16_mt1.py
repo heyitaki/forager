@@ -32,7 +32,7 @@ jsonify.jsonify_question_data(
   'Implement counter, which takes a non-negative single-digit integer d. It returns a function count that takes a non-negative integer n and returns the number of times that d appears as a digit in n. You may not use recursive calls or any features of Python not yet covered in the course.',
   'n , last = n // 10 , n % 10 if last == d : k += 1 return k return count',
   True,
-  'countizard recursion def counter(d): """ Return a function of N that returns the number of times D appears in N. >>> counter (8)(8018) 2 >>> counter (0)(2016) 1 >>> counter (0)(0) 0 """ def count k = 0 while last = n % 10'
+  'countizard def counter(d): """ Return a function of N that returns the number of times D appears in N. >>> counter (8)(8018) 2 >>> counter (0)(2016) 1 >>> counter (0)(0) 0 """ def count k = 0 while last = n % 10'
 )
 
 jsonify.jsonify_question_data(
