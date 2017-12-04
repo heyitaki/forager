@@ -4,7 +4,7 @@ import json
 
 es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 def search(query):
-  res = es.search(index='exam', doc_type='question', body={'query': {'multi_match': {'query': query, 'fields': ['q_txt', 's_txt', 'teacher', 'term', 'year', 'school', 'course', 'exam_type', 'tags']}}})
+  res = es.search(index='exam', doc_type='question', body={'query': {'multi_match': {'query': query, 'fields': ['q_txt', 's_txt', 'teacher', 'term', 'school', 'course', 'exam_type', 'redundancy', 'extra']}}})
   # print "%d documents found" % res['hits']['total']
   return json.dumps(res['hits']['hits'])
 

@@ -4,7 +4,7 @@ import os
 import json
 
 def upload_to_elastic():
-  es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+  es = start_elastic()
   for filename in os.listdir('./image_question'):
     [exam_info_path, question_info_path, question_image_path, solution_image_path] = get_paths(filename)
 
@@ -14,9 +14,7 @@ def upload_to_elastic():
     print '%s uploaded successfully to GCS' % filename
 
     update_json(data, exam_info_path)
-    update_json(data, question_info_path)    
-
-    es.indices.delete(index='exam', ignore=[400, 404])
+    update_json(data, question_info_path)
     es.index(index='exam', doc_type='question', body=json.dumps(data))
     print 'JSON uploaded successfully to ES'
 
@@ -26,6 +24,10 @@ def upload_to_gcs(destination_blob_name, filepath):
   blob = bucket.blob(destination_blob_name)
   blob.upload_from_filename(filepath)
   return destination_blob_name
+
+def clear_elastic():
+  es = start_elastic()
+  es.indices.delete(index='exam', ignore=[400, 404])
 
 ##### HELPERS #####
 def get_paths(path):
@@ -43,4 +45,8 @@ def update_json(curr_json, path_to_json):
   with open(path_to_json) as json_file:
     curr_json.update(json.load(json_file))
 
+def start_elastic():
+  return Elasticsearch([{'host': 'localhost', 'port': 9200}])
+
+#clear_elastic()
 upload_to_elastic()
