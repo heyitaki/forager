@@ -214,16 +214,26 @@ a {
   position: relative;
   top: 50%;
   transform: perspective(1px) translateY(-50%);
-  text-transform: uppercase;
   font-size: 14px;
   font-family: 'Tahoma';
   letter-spacing: 1px;
   color: #000;
 }
 
+.navbar-title a:link {
+  text-decoration: none;
+  color: #000;
+}
+
+.navbar-title a:visited {
+  text-decoration: none;
+  color: #000;
+}
+
 .logo {
   margin-left: 2%;
   float: left;
+  text-transform: uppercase;
   user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -233,16 +243,6 @@ a {
 
 .logo-text {
   display: inline-block;
-}
-
-.logo-text a:link {
-  text-decoration: none;
-  color: #000;
-}
-
-.logo-text a:visited {
-  text-decoration: none;
-  color: #000;
 }
 
 .logo-loc {

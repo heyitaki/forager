@@ -15,7 +15,8 @@ html
             h4
               a(href="/")=question._source.school
         .navbar-title.question-title
-          h2=question._source.course + " " + question._source.term + " " + question._source.exam_type + " #" + question._source.number 
+          h2
+            a(href=question._source.src_link)=question._source.course + " " + question._source.term + " " + question._source.exam_type + " #" + question._source.number 
   section
     .question-area
       .box#question-box
