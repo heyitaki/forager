@@ -1,7 +1,12 @@
 from redundancy import ucb, denero, cs61a, fa16, mt1
 import jsonify
 
-jsonify.jsonify_exam_data('cs61a_fa16_mt1.json', 'UCB', 'Denero', 'CS61A', 'FA16', 'MT1', '%s %s %s %s %s' % (ucb, denero, cs61a, fa16, mt1))
+jsonify.jsonify_exam_data(
+  'cs61a_fa16_mt1.json', 
+  'https://hkn.eecs.berkeley.edu/examfiles/cs61a_fa16_mt1.pdf', 
+  'UCB', 'Denero', 'CS61A', 'FA16', 'MT1', 
+  '%s %s %s %s %s' % (ucb, denero, cs61a, fa16, mt1)
+)
 
 jsonify.jsonify_question_data(
   'cs61a_fa16_mt1_q1.json',
@@ -15,8 +20,8 @@ jsonify.jsonify_question_data(
 jsonify.jsonify_question_data(
   'cs61a_fa16_mt1_q2.json',
   '2',
-  'Fill in the environment diagram that results from executing the code below until the entire program is finished, an error occurs, or all frames are filled. You may not need to use all of the spaces or frames. A complete answer will: • Add all missing names and parent annotations to all local frames. • Add all missing values created or referenced during execution. • Show the return value for each local frame.',
-  'func λ',
+  'Fill in the environment diagram that results from executing the code below until the entire program is finished, an error occurs, or all frames are filled. You may not need to use all of the spaces or frames. A complete answer will:  Add all missing names and parent annotations to all local frames.  Add all missing values created or referenced during execution.  Show the return value for each local frame.',
+  'func',
   True,
   'goldeen state splash klay curry lambda return global f1 f2 f3 f4 parent return value while'
 )
@@ -52,7 +57,7 @@ jsonify.jsonify_question_data(
   'cs61a_fa16_mt1_q4b.json',
   '4b',
   'Implement sum_squares, which takes a non-negative integer n and uses repeat_sum to return the sum of the squares of the first n positive integers. Assume repeat_sum is implemented correctly. You may use pow, which raises its first argument to the power of its second: pow(9, 2) is 81 and pow(9, 0.5) is 3.0.',
-  'lambda x : pow ( round ( pow (x , 0.5) + 1) , 2)',
+  'lambda x : pow (round (pow (x , 0.5) + 1) , 2)',
   True,
   'caterepeat def sum_squares (n): """ Return the sum of the first N perfect squares. >>> sum_squares (0) 0 >>> sum_squares (3) # 1**2 + 2**2 + 3**2 14 >>> sum_squares (5) # 1**2 + 2**2 + 3**2 + 4**2 + 5**2 55 """ f = return repeat_sum (f , 0 , n)'
 )
@@ -63,7 +68,7 @@ jsonify.jsonify_question_data(
   'Implement multiadder, which takes a positive integer n and returns an order n numeric function that sums an argument sequence of length n.',
   'if n == 1: return lambda x : x else : return lambda a : lambda b : multiadder (n -1)(a + b)',
   True,
-  'multikarp Terminology. An order 1 numeric function is a function that takes a number and returns a number. An order 2 numeric function is a function that takes a number and returns an order 1 numeric function. Likewise, an order n numeric function is a function that takes a number and returns an order n − 1 numeric function. The argument sequence of a nested call expression is the sequence of all arguments in all subexpressions, in the order they appear. For example, the expression f(3)(4)(5)(6)(7) has the argument sequence 3, 4, 5, 6, 7 def multiadder ( n ): """ Return a function that takes N arguments , one at a time , and adds them . >>> f = multiadder (3) >>> f (5)(6)(7) # 5 + 6 + 7 18 >>> multiadder (1)(5) 5 >>> multiadder (2)(5)(6) # 5 + 6 11 >>> multiadder (4)(5)(6)(7)(8) # 5 + 6 + 7 + 8 26 """ assert n > 0'
+  'multikarp Terminology. An order 1 numeric function is a function that takes a number and returns a number. An order 2 numeric function is a function that takes a number and returns an order 1 numeric function. Likewise, an order n numeric function is a function that takes a number and returns an order n  1 numeric function. The argument sequence of a nested call expression is the sequence of all arguments in all subexpressions, in the order they appear. For example, the expression f(3)(4)(5)(6)(7) has the argument sequence 3, 4, 5, 6, 7 def multiadder ( n ): """ Return a function that takes N arguments , one at a time , and adds them . >>> f = multiadder (3) >>> f (5)(6)(7) # 5 + 6 + 7 18 >>> multiadder (1)(5) 5 >>> multiadder (2)(5)(6) # 5 + 6 11 >>> multiadder (4)(5)(6)(7)(8) # 5 + 6 + 7 + 8 26 """ assert n > 0'
 )
 
 jsonify.jsonify_question_data(
@@ -72,5 +77,5 @@ jsonify.jsonify_question_data(
   'Complete the expression below by writing one integer in each blank so that the whole expression evaluates to 2016. The compose1 function appears on your midterm 1 study guide in the middle of the left column of page 2. Assume multiadder is implemented correctly.',
   'compose1 ( multiadder (4)(1000) , multiadder (3)(10)(1000))(1)(2)(3)',
   True,
-  'multikarp Terminology. An order 1 numeric function is a function that takes a number and returns a number. An order 2 numeric function is a function that takes a number and returns an order 1 numeric function. Likewise, an order n numeric function is a function that takes a number and returns an order n − 1 numeric function. The argument sequence of a nested call expression is the sequence of all arguments in all subexpressions, in the order they appear. For example, the expression f(3)(4)(5)(6)(7) has the argument sequence 3, 4, 5, 6, 7 compose1 ( multiadder ( )(1000) , multiadder ( )(10)( ))(1)(2)(3)'
+  'multikarp Terminology. An order 1 numeric function is a function that takes a number and returns a number. An order 2 numeric function is a function that takes a number and returns an order 1 numeric function. Likewise, an order n numeric function is a function that takes a number and returns an order n  1 numeric function. The argument sequence of a nested call expression is the sequence of all arguments in all subexpressions, in the order they appear. For example, the expression f(3)(4)(5)(6)(7) has the argument sequence 3, 4, 5, 6, 7 compose1 ( multiadder ( )(1000) , multiadder ( )(10)( ))(1)(2)(3)'
 )
