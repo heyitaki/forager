@@ -26,9 +26,11 @@ html
           img.scaled-image(src='/img/solution.PNG')
         button.button#remove-blur(type='button', onclick='removeBlur()') Show Solution
 script.
-  //- var height = Math.max(document.getElementById("question-box").offsetHeight, document.getElementById("answer-box").offsetHeight);
-  //- document.getElementById("question-box").style.height = `${height}px`;
-  //- document.getElementById("answer-box").style.height = `${height}px`;
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    var height = Math.max(document.getElementById("question-box").offsetHeight, document.getElementById("answer-box").offsetHeight);
+    document.getElementById("question-box").style.height = `${height}px`;
+    document.getElementById("answer-box").style.height = `${height}px`;
+  });
 
   function removeBlur() {
     document.getElementById("remove-blur").remove();
