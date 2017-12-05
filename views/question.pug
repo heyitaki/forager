@@ -30,8 +30,8 @@ html
 script.
   document.addEventListener("DOMContentLoaded", function(event) { 
     var height = Math.max(document.getElementById("question-box").offsetHeight, document.getElementById("answer-box").offsetHeight);
-    document.getElementById("question-box").style.height = `${height}px`;
-    document.getElementById("answer-box").style.height = `${height}px`;
+    document.getElementById("question-box").style.minHeight = `${height}px`;
+    document.getElementById("answer-box").style.minHeight = `${height}px`;
   });
 
   function removeBlur() {

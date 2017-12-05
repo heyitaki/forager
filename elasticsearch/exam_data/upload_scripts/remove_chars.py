@@ -1,5 +1,4 @@
-import re
-import tempfile
+import re, tempfile
 
 filename = 'cs61a_fa16_mt1.py'
 temp = tempfile.NamedTemporaryFile(mode="r+")

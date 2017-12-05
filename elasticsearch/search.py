@@ -24,10 +24,10 @@ def save_img_from_gcs(blob_name, dst_filename):
   # print 'Successfully downloaded %s to %s' % (blob_name, dst_filename)
 
 ##### HELPERS #####
-def start_elastic():
-  return Elasticsearch([{'host': 'localhost', 'port': 9200}])
+def start_bonsai(local=False):
+  if local:
+    return Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
-def start_bonsai():
   bonsai = os.environ['BONSAI_URL']
   auth = re.search('https\:\/\/(.*)\@', bonsai).group(1).split(':')
   host = bonsai.replace('https://%s:%s@' % (auth[0], auth[1]), '')
