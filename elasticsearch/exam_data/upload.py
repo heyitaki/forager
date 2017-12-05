@@ -4,6 +4,7 @@ import os, re, json, certifi
 
 def upload_to_elastic():
   es = start_bonsai()
+  create_index(es, 'exam')
   for filename in os.listdir('./image_question'):
     [exam_info_path, question_info_path, question_image_path, solution_image_path] = get_paths(filename)
 
@@ -51,8 +52,25 @@ def start_bonsai():
   bonsai = os.environ['BONSAI_URL']
   auth = re.search('https\:\/\/(.*)\@', bonsai).group(1).split(':')
   host = bonsai.replace('https://%s:%s@' % (auth[0], auth[1]), '')
-  es_header = [{'host': host, 'port': 443, 'use_ssl': True, 'http_auth': (auth[0],auth[1])}]
+  es_header = [{
+    'host': host, 
+    'port': 443, 
+    'use_ssl': True, 
+    'verify_certs': True,
+    'http_auth': (auth[0],auth[1]),
+    'ca_certs': certifi.where()
+  }]
   return Elasticsearch(es_header)
+
+def create_index(es, index_name):
+  if not es.indices.exists(index_name):
+    body = {
+      "settings": {
+        "number_of_shards": 6,
+        "number_of_replicas": 0
+      }
+    }
+    es.indices.create(index=index_name, body=body)
 
 #clear_elastic()
 upload_to_elastic()
