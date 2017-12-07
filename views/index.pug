@@ -11,10 +11,8 @@ html
     .container
       section
         .background-image(style='background-image: url(img/intro.jpg)')
-        .home-content-area
-          h1#title.animated.fadeInUp Forager
-          .search.animated.fadeInUp
-            form#search-box(action='/query', method='POST')
-              input#search-bar.big-bar(placeholder='Search for questions by course, topic, year, etc...', name='searchQuery', autofocus='', autocomplete='off')
-              button#search-button(type='submit')
-                i.fa.fa-search
+        h1#title.unselectable.animated.fadeInUp Forager
+        form#search-box-index.animated.fadeInUp(action='/query', method='POST')
+          input.search-bar.big-bar(name='searchQuery', autofocus='', autocomplete='off')
+          button.search-button(type='submit')
+            i.fa.fa-search
