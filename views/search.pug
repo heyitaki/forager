@@ -11,7 +11,7 @@ html
     .container
       header.result-navbar
         form#search-box-search(action='/query', method='POST')
-          input.search-bar.big-bar(name='searchQuery', value=query, autofocus='', autocomplete='off')
+          input#search-bar.search-bar.big-bar(name='searchQuery', value=query, autofocus='', autocomplete='off')
           button.search-button(type='submit')
             i.fa.fa-search
       section.result-section
@@ -24,3 +24,7 @@ html
                 p=result._source.src_link
               .result-details
                 p=result._source.q_txt
+script.
+  window.onload = function() {
+    document.activeElement.blur();
+  }
