@@ -1,0 +1,116 @@
+.result-navbar {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 80px;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.logo {
+  margin: auto;
+  margin-right: 25px;
+  margin-left: 25px;
+  text-transform: uppercase;
+}
+
+.logo-text {
+  font-size: 36px;
+  font-family: 'Raleway';
+  letter-spacing: 3px;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.logo-text a:link {
+  text-decoration: none;
+  color: #454545;
+}
+
+.logo-text a:visited {
+  text-decoration: none;
+  color: #454545;
+}
+
+#search-box-search {
+  margin: auto;
+  margin-left: 0px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#search-bar {
+  width: 580px;
+}
+
+.result-section{
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.result-area {
+  margin-left: calc(25px + 186.35px + 25px);
+  /* total bar width - text padding + result area padding + result padding */
+  width: calc(610.5px + 44px);
+  padding: 8px 7px;
+}
+
+.result {
+  text-align: left;
+  position: relative;
+  padding: 15px;
+  width: 100%;
+  background: white;
+}
+
+.result:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 30%;
+  height: 30px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 10%, #FFF 35%)
+}
+
+.result-header {
+  display: flex;
+  margin-bottom: 2px;
+  color: #1A237E;
+} 
+
+.result-header {
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.result-header a {
+  text-decoration: none;
+}
+
+.result-header a:hover {
+  text-decoration: underline;
+}
+
+.result-header a:link {
+  color: #1A237E;
+}
+
+.result-header a:visited {
+  color: #1A237E;
+}
+
+.result-link {
+  font-size: 13px;
+  color: #007700;
+  margin-bottom: 2px;
+}
+
+.result-details {
+  font-size: 13px;
+  color: #545454;
+  max-height: 3.5em;
+  overflow: hidden;
+  text-align: justify;
+}

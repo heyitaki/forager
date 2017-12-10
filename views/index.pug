@@ -4,15 +4,22 @@ html
     title Forager
     link(rel='icon', href='/img/search-icon.PNG')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
-    link(href='https://fonts.googleapis.com/css?family=Lato|Raleway:200,300,400', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lato|Raleway:200,400', rel='stylesheet')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='/css/index.css')
+    link(rel='stylesheet', href='/css/search.css')
   body
-    .container
-      section
-        .background-image(style='background-image: url(img/intro.jpg)')
-        h1#title.unselectable.animated.fadeInUp Forager
-        form#search-box-index.animated.fadeInUp(action='/query', method='POST')
-          input.search-bar.big-bar(name='searchQuery', autofocus='', autocomplete='off')
-          button.search-button(type='submit')
-            i.fa.fa-search
+    section
+      .background-image(style='background-image: url(img/intro.jpg)')
+      #transparent-navbar.animated.fadeInDown
+        .navbar-item.unselectable
+          a(href="/help", id="Help")="Help"
+        .navbar-item.unselectable
+          a(href="/about", id="About")="About"
+      #title.unselectable.animated.fadeInUp Forager
+        #subtitle.unselectable.animated.fadeInUp Search real exam questions by class, topic, term, etc.
+      form#search-box-index.animated.fadeInUp(action='/query', method='POST')
+        input.search-bar(name='searchQuery', autofocus='', autocomplete='off')
+        button.search-button(type='submit')
+          i.fa.fa-search

@@ -7,23 +7,27 @@ html
     link(href='https://fonts.googleapis.com/css?family=Lato|Raleway:200,300,400', rel='stylesheet')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='/css/search.css')
+    link(rel='stylesheet', href='/css/results.css')
   body
-    .container
-      header.result-navbar
-        form#search-box-search(action='/query', method='POST')
-          input#search-bar.search-bar.big-bar(name='searchQuery', value=query, autofocus='', autocomplete='off')
-          button.search-button(type='submit')
-            i.fa.fa-search
-      section.result-section
-        .result-area
-          for result in results
-            .result
-              .result-header
-                a(href=`/question/${result._id}`)=result._source.course + " " + result._source.term + " " + result._source.exam_type + " #" + result._source.number
-              .result-link
-                p=result._source.src_link
-              .result-details
-                p=result._source.q_txt
+    header.result-navbar
+      .navbar-title.logo.unselectable
+        .logo-text
+            a(href="/")="FORAGER"
+      form#search-box-search(action='/query', method='POST')
+        input#search-bar.search-bar(name='searchQuery', value=query, autofocus='', autocomplete='off')
+        button.search-button(type='submit')
+          i.fa.fa-search
+    section.result-section
+      .result-area
+        for result in results
+          .result
+            .result-header
+              a(href=`/question/${result._id}`)=result._source.course + " " + result._source.term + " " + result._source.exam_type + " #" + result._source.number
+            .result-link
+              p=result._source.src_link
+            .result-details
+              p=result._source.q_txt
 script.
   window.onload = function() {
     document.activeElement.blur();
