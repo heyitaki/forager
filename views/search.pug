@@ -24,7 +24,13 @@ html
                   a=result._source.course + " " + result._source.term + " " + result._source.exam_type + " #" + result._source.number
               .result-details
                 p=result._source.q_txt
+    .header-help-links
+      .help-links
+        a(href='/about') About
+        a(href='/help') Help
+
 script.
   function link(qid) {
     window.location.href = `/question/${qid}`;
   }
+
