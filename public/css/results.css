@@ -24,7 +24,7 @@
 
 .logo-text a:link {
   text-decoration: none;
-  color: #454545;
+  color: red;
 }
 
 .logo-text a:visited {
@@ -41,6 +41,13 @@
 
 #search-bar {
   width: 580px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+#search-button {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .result-section{
@@ -51,7 +58,7 @@
 .result-area {
   margin-left: calc(25px + 186.35px + 25px);
   /* total bar width - text padding + result area padding + result padding */
-  width: calc(610.5px + 44px);
+  width: calc(610.5px + 44px - 1.5px);
   padding: 8px 7px;
 }
 
@@ -112,5 +119,5 @@
   color: #545454;
   max-height: 3.5em;
   overflow: hidden;
-  text-align: justify;
+  /*text-align: justify;*/
 }

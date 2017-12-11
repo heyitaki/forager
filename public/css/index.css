@@ -8,6 +8,7 @@
   padding-right: 20px;
   position: absolute;
   background: transparent;
+  animation-delay: 0.3s;
 }
 
 .navbar-item {
@@ -49,25 +50,26 @@
   visibility: hidden;
 }
 
-#title {
+.front-title {
   font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  color: #FFF;
+}
+
+#title {
   font-size: 80px;
   font-weight: 200;
-  text-transform: uppercase;
   letter-spacing: 20px;
-  /*text-indent: 20px;*/
+  text-indent: 20px;
   text-align: center;
-  color: #FFFFFF;
   animation-delay: 0.3s;
 }
 
 #subtitle {
-  font-family: 'Raleway', sans-serif;
   font-size: 13px;
+  font-weight: 100;
   letter-spacing: 3px;
   margin-top: 5px;
-  text-transform: uppercase;
-  color: #FFFFFF;
 }
 
 #search-box-index {

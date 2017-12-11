@@ -16,7 +16,7 @@ html
             a(href="/")="FORAGER"
       form#search-box-search(action='/query', method='POST')
         input#search-bar.search-bar(name='searchQuery', value=query, autofocus='', autocomplete='off')
-        button.search-button(type='submit')
+        button#search-button.search-button(type='submit')
           i.fa.fa-search
     section.result-section
       .result-area
