@@ -24,6 +24,14 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
+app.get('/help', (req, res) => {
+  res.render('help');
+})
+
 app.get('/query', (req, res) => {
   res.status(303).send('303: Use /search.');
 });

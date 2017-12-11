@@ -7,18 +7,18 @@ html
     link(href='https://fonts.googleapis.com/css?family=Lato|Raleway:200,300,400', rel='stylesheet')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/css/styles.css')
-  body
-    .container
-      section
-        .background-image(style='background-image: url(img/intro.jpg)')
+    .background-image(style='background-image: url(img/intro.jpg)')
         .home-content-area
-          h1#title.animated.fadeInUp Forager
-          .search.animated.fadeInUp
-            form#search-box(action='/query', method='POST')
-              input#search-bar.big-bar(placeholder='Search for questions by course, topic, year, etc...', name='searchQuery', autofocus='', autocomplete='off')
-              button#search-button(type='submit')
-                i.fa.fa-search
+          h1#title Forager
+  body
+    section
+      .info-section
+        p Search terms like "CS61a" or "recursion"
+        p Search based on term (fall), year (2016), and teacher (Denero!)
+
+
     .footer-help-links
       .help-links
+        a(href='/search') Search
         a(href='/about') About
-        a(href='/help') Help
+

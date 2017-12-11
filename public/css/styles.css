@@ -334,3 +334,36 @@ a {
   left: calc(50% - 85px);
   top: calc(50% - 25px);
 }
+
+.footer-help-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0pt;
+  right: 0pt;
+}
+
+.header-help-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0pt;
+  right: 0pt;
+}
+
+.help-links a:link, a:visited {
+  float: left;
+  display: inline;
+  color: white;
+  text-align: center;
+  padding: 16px;
+}
+
+.info-section {
+  color:white;
+  margin: 0;
+}
