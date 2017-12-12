@@ -8,6 +8,7 @@ html
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/css/styles.css')
     link(rel='stylesheet', href='/css/search.css')
+    link(rel='stylesheet', href='/css/sidebar.css')
     link(rel='stylesheet', href='/css/results.css')
   body
     header.result-navbar
@@ -28,7 +29,31 @@ html
               p=result._source.src_link
             .result-details
               p=result._source.q_txt
+      #sidebar
+        i.fa.fa-close#close-button(onclick="closeSidebar()")
+      #transparent-navbar.animated.fadeIn
+        .navbar-item.unselectable
+          i.fa.fa-info-circle#search-info(onclick="openSidebar()")
+        .navbar-item.unselectable
+          i.fa.fa-question-circle(onclick="navigate('about')")
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.js', integrity='sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=', crossorigin='anonymous')
 script.
   window.onload = function() {
     document.activeElement.blur();
   }
+
+  function openSidebar() {
+    $("#sidebar").width(250);
+  }
+
+  function closeSidebar() {
+    $("#sidebar").width(0);
+  }
+
+  function navigate(link) {
+    window.location.href = `/${link}`;
+  }
+
+  $("i").click(function() {
+    $(this).toggleClass("toggle");
+  });

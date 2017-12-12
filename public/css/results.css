@@ -121,3 +121,7 @@
   overflow: hidden;
   /*text-align: justify;*/
 }
+
+.navbar-item {
+  color: #CCCCCC;
+}
