@@ -1,0 +1,32 @@
+#about-navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 65px;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.logo {
+  margin: auto;
+  margin-left: 25px;
+  text-transform: uppercase;
+}
+
+.logo-text {
+  font-size: 36px;
+  font-family: 'Raleway';
+  letter-spacing: 3px;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.logo-text a:link {
+  text-decoration: none;
+  color: #454545;
+}
+
+.logo-text a:visited {
+  text-decoration: none;
+  color: #454545;
+}

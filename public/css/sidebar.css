@@ -67,15 +67,15 @@
   font-size: 16px;
   margin-left: 250px;
   color: #777777;
+  transition: 0.3s;
 }
 
 #close-button:hover {
-  color: #444444;
+  color: #0D77E2;
 }
 
 #sidebar-content-area {
   margin: 25px 20px 25px 20px;
-  color: #454545;
 }
 
 .content-entry {
@@ -87,9 +87,10 @@
 
 .sidebar-title {
   font-size: 20px;
-  border-bottom: 1.5px solid #777777;
+  border-bottom: 1.5px solid #0D77E2;
   padding: 5px;
   margin-top: 10px;
+  color: #0D77E2;
 }
 
 .sidebar-left {
@@ -109,10 +110,12 @@
 
 .sidebar-text {
   font-size: 14px;
+  color: #000;
 }
 
 .sidebar-right .sidebar-text { 
   padding-top: 2px;
+  color: #545454;
 }
 
 .sidebar-code {

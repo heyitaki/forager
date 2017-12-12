@@ -66,6 +66,10 @@ app.get('/question/:id', (req, res) => {
   });
 });
 
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
 app.get('*', (req, res) => {
   res.redirect(url.format({
     pathname: '/'

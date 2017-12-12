@@ -1,0 +1,75 @@
+doctype htmls
+html
+  head
+    title Forager
+    link(rel='icon', href='/img/search-icon.PNG')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Lato|Raleway:200,300,400', rel='stylesheet')
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='/css/search.css')
+    link(rel='stylesheet', href='/css/tabs.css')
+    link(rel='stylesheet', href='/css/about.css')
+  body
+    header#about-navbar
+      .navbar-title.logo.unselectable
+        .logo-text
+          a(href="/")="FORAGER"
+      .tabs-wrapper
+        button.tab.active(name="about") About
+        button.tab(name="license") License
+        button.tab(name="contact") Contact
+    #about.tab-content.active
+      .tab-title 
+        heading About
+      .tab-section
+        h1.tab-h1 Mission
+        .tab-text Forager aims to give each and every student an effective tool to enhance their studying and test preparation methods. While Forager is certainly not a substitute for classroom content, we intend for it to be a powerful supplement by which users can further their understanding on a topic-by-topic basis through repeated practical application. 
+      .tab-section 
+        h1.tab-h1 How Forager started
+        .tab-text Forager was incepted as a semester-long project for CS194-132 Computing for Social Good at UC Berkeley. By adopting a hyperlocal lens, we identified and addressed a social good issue present in the immediate community: anxiety and stressed caused by exam season. Specifically, we observed that freshmen and sophomore students often felt that they were ill-prepared for tests and weren't given the tools they needed to prepare efficiently. Forager is our solution for this problem.
+      .tab-section
+        h1.tab-h1 Next steps
+        .tab-text We are constantly striving to make Forager more interactive and useful to its users. Over the next few months, we want users to be able to 1) submit their own tags for questions, to make searching more efficient for everyone, 2) comment on specific questions, so as to discuss and clear up any doubts that may have arisen while working out the question, and 3) submit ratings regarding usefulness and difficulty for each question. In addition to this, Forager intends to start adding exams from other universities to help students across the country. Check back soon for these updates!
+    #license.tab-content
+      .tab-title 
+        heading License
+      .tab-section
+        h1.tab-h1="MIT License"
+        pre.tab-text
+          |Copyright [YEAR] [COPYRIGHT HOLDER]
+          |Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+          |
+          |The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+          |
+          |THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        .tab-body="jQuery: Copyright (c) JQuery Foundation"
+      .tab-section
+        h1.tab-h1="Apache 2.0 License"
+        pre.tab-text
+          |Copyright [yyyy] [name of copyright owner]
+          |Licensed under the Apache License, Version 2.0 (the "License");
+          |you may not use this file except in compliance with the License.
+          |You may obtain a copy of the License at
+          |
+          |   http://www.apache.org/licenses/LICENSE-2.0
+          |
+          |Unless required by applicable law or agreed to in writing, software
+          |distributed under the License is distributed on an "AS IS" BASIS,
+          |WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+          |See the License for the specific language governing permissions and
+          |limitations under the License.
+        .tab-body="Elasticsearch: Copyright (c) Elastic.co"
+        .tab-body="google-cloud-python: Copyright (c) Google Cloud Platform"
+      .tab-section
+        h1.tab-h1="SIL Open Font License"
+        pre.tab-text
+          |The content of this license is available with a FAQ at http://scripts.sil.org/OFL
+        .tab-body="Source Code Pro: Copyright 2010, 2012 Adobe Systems Incorporated"
+    #contact.tab-content
+      .tab-title
+        heading Contact
+      .tab-text Feel free to contact us with questions, feedback, and/or concerns at akshath@berkeley.edu. 
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.js', integrity='sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=', crossorigin='anonymous')
+    script(src='/js/tabs.js')
+
