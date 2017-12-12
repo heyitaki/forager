@@ -24,7 +24,7 @@
 
 .logo-text a:link {
   text-decoration: none;
-  color: red;
+  color: #454545;
 }
 
 .logo-text a:visited {
@@ -110,7 +110,7 @@
 
 .result-link {
   font-size: 13px;
-  color: #007700;
+  color: #0D77E2;
   margin-bottom: 2px;
 }
 
@@ -122,6 +122,7 @@
   /*text-align: justify;*/
 }
 
+/* Transparent navbar & sidebar */
 .navbar-item {
   color: #CCCCCC;
 }

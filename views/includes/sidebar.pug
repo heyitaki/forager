@@ -1,0 +1,64 @@
+#sidebar.unselectable
+  i.fa.fa-close#close-button(onclick="closeSidebar()")
+  #sidebar-content-area
+    .sidebar-title
+      p="Search terminology"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Course"
+      .sidebar-right
+        .sidebar-code="CS61A"
+        .sidebar-text &nbsp;or&nbsp;
+        .sidebar-code="61A"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Teacher"
+      .sidebar-right
+        .sidebar-code="Denero"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Term"
+      .sidebar-right
+        .sidebar-code="Fall 2016"
+        .sidebar-text &nbsp;or&nbsp;
+        .sidebar-code="Fa16"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Topic"
+      .sidebar-right
+        .sidebar-code="recursion"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Exam type"
+      .sidebar-right
+        .sidebar-code="MT1"
+        .sidebar-text &nbsp;or&nbsp;
+        .sidebar-code="midterm 1"
+    .sidebar-title
+      p="Keyboard shortcuts"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Quick search"
+      .sidebar-right
+        .sidebar-code="Alt"
+        .sidebar-text &nbsp;+&nbsp;
+        .sidebar-code="S"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Open sidebar"
+      .sidebar-right
+        .sidebar-code="Alt"
+        .sidebar-text &nbsp;+&nbsp;
+        .sidebar-code="I"
+    .content-entry
+      .sidebar-left
+        .sidebar-text="Close sidebar"
+      .sidebar-right
+        .sidebar-code="ESC"
+        .sidebar-text &nbsp;or&nbsp;
+        .sidebar-code="Enter"
+#transparent-navbar.animated.fadeIn
+  .navbar-item.unselectable
+    i.fa.fa-info-circle#search-info(onclick="openSidebar()")
+  .navbar-item.unselectable
+    i.fa.fa-question-circle(onclick="navigate('about')")

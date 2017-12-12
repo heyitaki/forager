@@ -16,30 +16,9 @@ html
         h1#title Forager
         h2#subtitle Search real exam questions by class, topic, term, etc.
       form#search-box-index.animated.fadeInUp(action='/query', method='POST')
-        input.search-bar(name='searchQuery', autofocus='', autocomplete='off')
+        input#search-bar.search-bar(name='searchQuery', autofocus='', autocomplete='off')
         button.search-button(type='submit')
           i.fa.fa-search
-      #sidebar
-        i.fa.fa-close#close-button(onclick="closeSidebar()")
-      #transparent-navbar.animated.fadeIn
-        .navbar-item.unselectable
-          i.fa.fa-info-circle#search-info(onclick="openSidebar()")
-        .navbar-item.unselectable
-          i.fa.fa-question-circle(onclick="navigate('about')")
+      include includes/sidebar.pug
     script(src='https://code.jquery.com/jquery-3.2.1.slim.js', integrity='sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=', crossorigin='anonymous')
-script.
-  function openSidebar() {
-    $("#sidebar").width(250);
-  }
-
-  function closeSidebar() {
-    $("#sidebar").width(0);
-  }
-
-  function navigate(link) {
-    window.location.href = `/${link}`;
-  }
-
-  $("i").click(function() {
-    $(this).toggleClass("toggle");
-  });
+    script(src='/js/sidebar.js')
