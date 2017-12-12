@@ -24,7 +24,7 @@ def save_img_from_gcs(blob_name, dst_filename):
   # print 'Successfully downloaded %s to %s' % (blob_name, dst_filename)
 
 ##### HELPERS #####
-def start_bonsai(local=True):
+def start_bonsai(local=False):
   if local:
     return Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
