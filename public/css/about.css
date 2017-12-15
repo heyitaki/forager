@@ -1,10 +1,10 @@
 #about-navbar {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   height: 65px;
   background-color: #F7F7F7;
   border-bottom: 1px solid #EBEBEB;
+  position: relative;
 }
 
 .logo {
@@ -29,4 +29,46 @@
 .logo-text a:visited {
   text-decoration: none;
   color: #454545;
+}
+
+/* Custom tabs styles */
+#about .tab-text {
+  line-height: 21px;
+}
+
+#license .tab-section {
+  margin-bottom: 20px;
+}
+
+#license .tab-text {
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  font-size: 15px;
+}
+
+.tab-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tab-left {
+  width: 67%;
+  text-align: justify;
+}
+
+.tab-right {
+  width: 30%;
+  letter-spacing: 1px;
+  color: #545454;
+}
+
+.tab-subtitle {
+  color: #0D77E2;
+  display: inline-block;
+}
+
+.tab-subtitle a:link, a:visited {
+  color: #0D77E2;
+  text-decoration: none;
 }

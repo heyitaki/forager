@@ -14,7 +14,7 @@ html
     header.result-navbar
       .navbar-title.logo.unselectable
         .logo-text
-            a(href="/")="FORAGER"
+          a(href="/")="FORAGER"
       form#search-box-search(action='/query', method='POST')
         input#search-bar.search-bar(name='searchQuery', value=query, autofocus='', autocomplete='off')
         button#search-button.search-button(type='submit')
@@ -32,7 +32,15 @@ html
       include includes/sidebar.pug
     script(src='https://code.jquery.com/jquery-3.2.1.slim.js', integrity='sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=', crossorigin='anonymous')
     script(src='/js/sidebar.js')
+    script(src='/js/jquery.mark.es6.min.js')
+    script(src='/js/highlight.js')
 script.
   window.onload = function() {
     document.activeElement.blur();
   }
+
+  $(document).ready(function() {
+    let tokens = "#{query}";
+    tokens = tokens.split(" ");
+    highlight(tokens);
+  });

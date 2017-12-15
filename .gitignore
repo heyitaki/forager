@@ -41,5 +41,10 @@ Thumbs.db
 ##########
 node_modules
 elasticsearch/data
+elasticsearch/exam_data/image_question
+elasticsearch/exam_data/image_solution
+elasticsearch/exam_data/info_question
+elasticsearch/exam_data/info_exam
+elasticsearch/exam_data/upload_scripts/cs*
 public/img/question.PNG
 public/img/solution.PNG

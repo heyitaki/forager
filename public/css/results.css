@@ -126,3 +126,9 @@
 .navbar-item {
   color: #CCCCCC;
 }
+
+/* Highlight search query */
+mark {
+  background-color: transparent;
+  font-weight: bolder;
+}

@@ -1,7 +1,7 @@
 ## FORAGER
 
 ### Usage Instructions
-Simply navigate to https://www.4age.org.
+Simply navigate to https://www.4ager.org.
 
 ### Next steps
 - Integration with HKN site
