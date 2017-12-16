@@ -1,20 +1,20 @@
 .search-bar {
   outline: none;
   width: 610px;
-  height: 34px;
+  height: 40px;
   border: 1.25px solid #1A237E;
   border-right-width: 0px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   font-size: 16px;
   font-family: 'Lato';
-  padding-left: 18px;
+  padding-left: 15px;
 }
 
 .search-button {
   outline: none;
   width: 50px;
-  height: 34px;
+  height: 40px;
   z-index: 1;
   text-align: center;
   padding-right: 7px;

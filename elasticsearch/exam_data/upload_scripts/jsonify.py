@@ -1,8 +1,9 @@
 import json
 
-def jsonify_exam_data(filename, src_link, school, teacher, course, term, exam_type, redundancy):
+def jsonify_exam_data(filename, q_link, s_link, school, teacher, course, term, exam_type, redundancy):
   data = {}
-  data['src_link'] = src_link
+  data['q_link'] = q_link # Link to exam source (host on 4ager.org if not found online)
+  data['s_link'] = s_link # Link to solution source
   data['school'] = school # UCB
   data['teacher'] = teacher # Paxson
   data['course'] = course # CS161

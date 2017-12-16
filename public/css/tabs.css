@@ -33,7 +33,7 @@
 
 .tab-content {
   width: 100%;
-  padding: 25px 28px;
+  padding: 25px 30px;
   display: none;
 }
 
@@ -76,6 +76,5 @@ pre {
   white-space: -pre-wrap;      /* Opera 4-6 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word; 
-  letter-spacing: 1px;
   font-family: Arial, sans-serif;
 }

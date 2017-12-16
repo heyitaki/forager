@@ -19,24 +19,18 @@ html
       .tabs-wrapper
         button.tab.active(name="question") Question
         button.tab(name="solution") Solution
-      //- .navbar-title.question-title
-      //-   a(href=question._source.src_link)=question._source.course + " " + question._source.term + " " + question._source.exam_type + " #" + question._source.number 
-    #question.tab-content.active
-      .question-area
+    .question-area
+      #question.tab-content.active
         include includes/question-info
-        .box#question-box
-          img.scaled-image(src='/img/question.PNG')
-    #solution.tab-content
-      .question-area
+        .image-container
+          img.scaled-image(src='/img/question.PNG', onclick=`navigate('${question._source.src_link}')`)
+      #solution.tab-content
         include includes/question-info
-        .box#answer-box
-          #blur
-            img.scaled-image(src='/img/solution.PNG')
-          button.button#remove-blur(type='button', onclick='removeBlur()') Show Solution
+        .image-container
+          img.scaled-image(src='/img/solution.PNG', onclick=`navigate('${question._source.src_link}')`)
     script(src='https://code.jquery.com/jquery-3.2.1.slim.js', integrity='sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=', crossorigin='anonymous')
     script(src='/js/tabs.js')
 script.
-  function removeBlur() {
-    document.getElementById("remove-blur").remove();
-    document.getElementById("blur").style.filter = 'blur(0px)';
+  function navigate(link) {
+    window.location.href = link;
   }
