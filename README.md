@@ -1,4 +1,5 @@
 ## FORAGER
+Too poor to keep paying for domain, so 4ager.org is no longer up :( 
 
 ### Development Instructions
 #### Starting node.js
@@ -7,9 +8,6 @@
 #### Starting Elasticsearch
 1. Open search.py and set local=True [+ upload.py if uploading data]
 2. Navigate to ./elasticsearch and run bin\elasticsearch.bat [cmd on Windows]
-
-### Usage Instructions
-Simply navigate to https://www.4ager.org.
 
 ### Next steps
 - Integration with HKN site
